@@ -8,14 +8,14 @@ const commentForm = document.getElementById("comment-form")
 
 commentForm.addEventListener('submit', (event) => {
     event.preventDefault();
-    (renderComment(event.target.comment.value));
+    addComment(event.target.comment.value);
     event.target.comment.value = '';
 });
 
 fetch(url)
-.then((res) => res.json())
-.then(renderPage);
-//.then((data) => renderPage(data));
+    .then((res) => res.json())
+    .then(renderPage);
+    //.then((data) => renderPage(data));
 
 function renderPage(data) {
     fgImage.src = (data.image);
@@ -24,13 +24,12 @@ function renderPage(data) {
         //data.likes++;
         fgLikes.innerText = `${data.likes++} likes`
     });
-    renderComment(data.comments);
+    setComments(data.comments);
 }
 
-function renderComment(comments) {
+function setComments(comments) {
     fgComments.innerHTML = "";          //empty comments 
     comments.forEach((comment) => addComment(comment.content));
-    //forEach comment cb & append the content
 }
 
 function addComment(comment) {
