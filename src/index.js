@@ -13,8 +13,8 @@ commentForm.addEventListener('submit', (event) => {
 });
 
 fetch(url)
-.then((res) => res.json())
-.then(renderPage);
+    .then((res) => res.json())
+    .then(renderPage);
 //.then((data) => renderPage(data));
 
 function renderPage(data) {
@@ -34,7 +34,3 @@ function renderComment(comments) {
 }
 
 function addComment(comment) {
-    const li = document.createElement('li');
-    li.innerText = comment;
-    fgComments.append(li);
-}
